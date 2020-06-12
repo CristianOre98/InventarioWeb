@@ -8,6 +8,9 @@ public class Categoria {
      private int estado_categoria;
 
     public Categoria() {
+    this.id_categoria = 0;
+    this.nom_categoria = "";
+    this.estado_categoria = 1;
     }
 
     public Categoria(int id_categoria, String nom_categoria, int estado_categoria) {
