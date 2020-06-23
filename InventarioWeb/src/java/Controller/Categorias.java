@@ -63,10 +63,22 @@ public class Categorias extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
             dispatcher.forward(request, response);
 
-        }
-        
-        else {
-
+        }else if(parametro.equals("listar")){
+            this.listaCategorias(request, response);
+        }else if(parametro.equals("modificar")){
+            //Se efectua el casting o conversión de datos porque lo ingresado en el formulario es texto.
+            int id_categoria = Integer.parseInt(request.getParameter("id_cat"));
+            String nom_categoria = request.getParameter("nombre_cat");
+            int estado_categoria = Integer.parseInt(request.getParameter("estado_cat"));
+            
+            String pagina = "/Vistas-Categorias/crearCategoria.jsp?id_c="+id_categoria+"&&nombre_c="+nom_categoria+"&&estado_c="+estado_categoria+"&&senal=1";
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+            
+        }else if(parametro.equals("eliminar")){
+            int del_id = Integer.parseInt(request.getParameter("id"));
+            CategoriaDAO categoria = new CategoriaDAOImplementar();
+            categoria.borrarCat(del_id);    
             this.listaCategorias(request, response);
         }
     }
@@ -76,16 +88,38 @@ public class Categorias extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        // processRequest(request, response);
-        Categoria categoria = new Categoria ();
-        //se efectua el casting o conversion de datos porque lo ingresado en el formulario es texto
-        categoria.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
-        categoria.setNom_categoria(request.getParameter("txtNomCategoria"));
-        categoria.setEstado_categoria(Integer.parseInt(request.getParameter("txtEstadoCategoria")));
+        String parametro = request.getParameter("accion");
+            
+                
+             Categoria categoria = new Categoria();
+        //Se efectua el casting o conversión de datos porque lo ingresado en el formulario es texto.
+        int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
+        String nom_categoria = request.getParameter("txtNomCategoria");
+        int estado_categoria = Integer.parseInt(request.getParameter("txtEstadoCategoria"));
         
+        categoria.setId_categoria(id_categoria);
+        categoria.setNom_categoria(nom_categoria);
+        categoria.setEstado_categoria(estado_categoria);
         
-        CategoriaDAO guardaCategoria = new CategoriaDAOImplementar();
-        guardaCategoria.guardarCat(categoria);
+        CategoriaDAO guardarCategoria = new CategoriaDAOImplementar();
+        guardarCategoria.guardarCat(categoria);
+        
         this.listaCategorias(request, response);
+        //se efectua el casting o conversion de datos porque lo ingresado en el formulario es texto
+       
+         
+             
+        
+        
+        
+        
+        
+      
+       
+        
+        
+        
+        
     }
     /**
      * Returns a short description of the servlet.
@@ -96,5 +130,7 @@ public class Categorias extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
 
 }

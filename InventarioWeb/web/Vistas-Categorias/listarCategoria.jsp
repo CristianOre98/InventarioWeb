@@ -30,8 +30,9 @@
                     <td><%= categoria.getNom_categoria()%></td>
                     <td><%= categoria.getEstado_categoria()%></td>
                     <td>
-                        <a href="#" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button">Editar</a>
-                        <a href="#" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button">Eliminar</a>
+                      <a href="<%= request.getContextPath() %>/categorias?opcion=modificar&&id_cat=<%= categoria.getId_categoria() %>&&nombre_cat=<%= categoria.getNom_categoria() %>&&estado_cat=<%= categoria.getEstado_categoria() %>" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button" name="btnmodi">Editar</a>
+                        
+                        <a href="<%= request.getContextPath() %>/categorias?opcion=eliminar&&id=<%= categoria.getId_categoria() %>" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button">Eliminar</a>   
                     </td>
                 </tr>
                 <%
