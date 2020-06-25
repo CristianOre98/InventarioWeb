@@ -14,6 +14,7 @@
         <h1>BIENVENID@!</h1>
         <div style="width: 600px;">
             <a href="<%= request.getContextPath()%>/categorias?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva Categoria</a>
+             <a class="btn btn-warning float-right" href="ReporteCategoria">Reporte de Categoria</a>
             <h3>Listado de Categorias</h3>
             <table class="table table-striped">
                 <tr>
