@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CONTROL DE INVENTARIO</title>
-        <%@include file="../WEB-INF/Vistas-Parciales/css.jspf" %>
+        <%@include file="../WEB-INF/Vistas-Parciales/css-js.jspf" %>
     </head>
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
