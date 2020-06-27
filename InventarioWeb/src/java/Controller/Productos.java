@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nolasco
  */
-public class Producto extends HttpServlet {
+public class Productos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -91,15 +91,15 @@ public class Producto extends HttpServlet {
         String parametro = request.getParameter("accion");
             
                 
-             Producto producto = new Producto();
+             Productos producto = new Productos();
         //Se efectua el casting o conversión de datos porque lo ingresado en el formulario es texto.
         int id_producto = Integer.parseInt(request.getParameter("id_producto"));
         String nom_producto = request.getParameter("txtNomproducto");
         int estado_producto = Integer.parseInt(request.getParameter("txtEstadoProducto"));
         
-        Producto.setId_producto(id_producto);
-        Producto.setNom_producto(nom_producto);
-        Producto.setEstado_producto(estado_producto);
+        Productos.setId_producto(id_producto);
+        Productos.setNom_producto(nom_producto);
+        Productos.setEstado_producto(estado_producto);
         
         ProductoDAO guardarCategoria = new ProductoDAOImplementar();
         guardarCategoria.guardarCat(producto);

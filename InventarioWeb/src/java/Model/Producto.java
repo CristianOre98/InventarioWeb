@@ -1,32 +1,42 @@
-
-package Model;
-
+    package Model;
+import Model.Categoria;
 
 public class Producto {
     private int id_producto;
     private String nom_producto;
-    private int categoria_id;
+    private String des_producto;
     private float stock;
     private float precio;
     private String unidadMedida;
     private int estado;
-    private Categoria categoria;
+    private int categoria_id;
+    private Categoria categoria;   //Objeto categoria.
+    private String fecha_entrada;
 
     public Producto() {
         this.id_producto = 0;
-        this.categoria = new Categoria();
+        this.categoria = new Categoria();  //Inicializar el modelo categoría.
+        
+        this.nom_producto = "";
+        this.estado = 1;
     }
 
-    public Producto(int id_producto, String nom_producto, int categoria_id, float stock, float precio, String unidadMedida, int estado, Categoria categoria) {
+    public Producto(int id_producto, String nom_producto, String des_producto, float stock, float precio, String unidadMedida, int estado, int categoria_id, Categoria categoria, String fecha_entrada) {
         this.id_producto = id_producto;
         this.nom_producto = nom_producto;
-        this.categoria_id = categoria_id;
+        this.des_producto = des_producto;
         this.stock = stock;
         this.precio = precio;
         this.unidadMedida = unidadMedida;
         this.estado = estado;
+        this.categoria_id = categoria_id;
         this.categoria = categoria;
+        this.fecha_entrada = fecha_entrada;
     }
+
+    
+    
+   
 
     public int getId_producto() {
         return id_producto;
@@ -44,13 +54,15 @@ public class Producto {
         this.nom_producto = nom_producto;
     }
 
-    public int getCategoria_id() {
-        return categoria_id;
+    public String getDes_producto() {
+        return des_producto;
     }
 
-    public void setCategoria_id(int categoria_id) {
-        this.categoria_id = categoria_id;
+    public void setDes_producto(String des_producto) {
+        this.des_producto = des_producto;
     }
+
+   
 
     public float getStock() {
         return stock;
@@ -91,6 +103,25 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public String getFecha_entrada() {
+        return fecha_entrada;
+    }
+
+    public void setFecha_entrada(String fecha_entrada) {
+        this.fecha_entrada = fecha_entrada;
+    }
+
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
+   
     
     
+     
 }
