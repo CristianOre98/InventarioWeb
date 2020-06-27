@@ -1,9 +1,8 @@
 
 package DAO;
 
-
-import Factory.ConexionBD;
-import Factory.FactoryConexionBD;
+import Factory.ConexionDB;
+import Factory.FactoryConexionDB;
 import Model.Producto;
 import Model.Categoria;
 import java.util.List;
@@ -14,14 +13,14 @@ import java.util.List;
 
 public class ProductoDAOImplementar implements ProductoDAO{
 
-    ConexionBD conn;
+    ConexionDB conn;
 
     public ProductoDAOImplementar() {
         
     }
 
     public List<Producto> listar() {
-        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
       StringBuilder miSQL = new StringBuilder();
       miSQL.append("SELECT p.id_producto, p.nom_producto, p.des_producto, p.stock, p.precio, p.unidad_de_medida, p.estado_producto, "
               + "p.categoria, p.fecha_entrada FROM tb_producto p INNER JOIN tb_categoria c on p.categoria = c.id_categoria");
@@ -59,7 +58,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public Producto editarPro(int id_pro_edit) {
-       this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
+       this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
         Categoria catego = new Categoria();
         Producto producto = new Producto();
         StringBuilder miSQL = new StringBuilder();
@@ -88,7 +87,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public boolean guardarPro(Producto producto) {
-        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
+        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
         boolean guardar = false;
         try{
             if(producto.getId_producto() == 0){
@@ -131,7 +130,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public boolean borrarPro(int id_pro_borrar) {
-         this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
+         this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
         boolean borrar = false;           //Bandera de resultados
         try{
             StringBuilder miSQL = new StringBuilder();
