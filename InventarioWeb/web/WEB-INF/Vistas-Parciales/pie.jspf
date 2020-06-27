@@ -1,11 +1,24 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<%--Aca cierran los div que se abrieron en encabezado.jspf--%>
-</div>
-<div class="pie">
+      
 
-        &COPY; Cristian Orellana
-
-    </div>
+     <footer class="py-4 bg-dark mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
 </div>
+        <script type="text/javascript">
+             $("#sidebarToggle").on("click", function(e) {
+        e.preventDefault();
+        $("body").toggleClass("sb-sidenav-toggled");
+    });
+        </script>
 
