@@ -11,11 +11,14 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs._TextPDF-5.5.9.classpath}</file>
+                    <file>${&lt;&lt;&lt;&lt;&lt;&lt;&lt; Upstream, based on origin/master}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.itextpdf-5.5.9.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.mysql-connector-java-5.1.38-bin.jar}</file>
+                    <file>${file.reference.mysql-connector-java-5.1.38-bin__1_.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
