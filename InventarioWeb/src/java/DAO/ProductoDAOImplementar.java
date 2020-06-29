@@ -95,11 +95,11 @@ public class ProductoDAOImplementar implements ProductoDAO{
                 //Agregar consulta SQL; el id_categoria es autoincrementable.
                 miSQL.append("INSERT INTO tb_producto(nom_producto, des_producto, stock, precio, unidad_de_medida, "
                         + "categoria, fecha_entrada) VALUES ('");
-                miSQL.append(producto.getNom_producto()+ "', '").append(producto.getDes_producto()+"', ");
-                miSQL.append(producto.getStock()+", ").append(producto.getPrecio()+", '");
-                miSQL.append(producto.getUnidadMedida()+"', ").append(producto.getCategoria_id()+", ");
+                miSQL.append(producto.getNom_producto()+ "', '").append(producto.getDes_producto()+"', '");
+                miSQL.append(producto.getStock()+"', ").append(producto.getPrecio()+"', '");
+                miSQL.append(producto.getUnidadMedida()+"', '").append(producto.getCategoria_id()+"', ");
                 miSQL.append(producto.getFecha_entrada());
-                miSQL.append(");");
+                miSQL.append("');");
                 //Invocar método para ejecutar la consulta.
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro Guardado...");

@@ -131,7 +131,7 @@ public class Productos extends HttpServlet {
             
                 
              Producto producto = new Producto();
-             Categoria categoria = new Categoria();
+             
         //Se efectua el casting o conversión de datos porque lo ingresado en el formulario es texto.
         
          int id_producto = Integer.parseInt(request.getParameter("txtId_producto"));

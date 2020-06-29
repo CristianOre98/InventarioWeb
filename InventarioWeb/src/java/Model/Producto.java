@@ -15,7 +15,7 @@ public class Producto {
 
     public Producto() {
         this.id_producto = 0;
-        this.categoria = new Categoria();  //Inicializar el modelo categoría.
+  
         
         this.nom_producto = "";
         this.estado = 1;
