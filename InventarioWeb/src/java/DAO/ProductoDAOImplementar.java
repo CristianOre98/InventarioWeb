@@ -113,7 +113,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
                 miSQL.append(", precio =  ").append(producto.getPrecio());
                 miSQL.append(", unidad_de_medida =  '").append(producto.getUnidadMedida());
                 miSQL.append("', categoria =  ").append(producto.getCategoria_id());
-                miSQL.append(", fecha_entrada = '").append(producto.getFecha_entrada()).append("';");
+                miSQL.append(", fecha_entrada = '").append(producto.getFecha_entrada()).append("');");
                 //Invocar método para ejecutar la consulta.
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro modificado correctamente!");

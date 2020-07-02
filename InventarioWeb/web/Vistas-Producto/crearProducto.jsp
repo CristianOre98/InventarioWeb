@@ -1,6 +1,30 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Model.Producto"%>
+<%@page import="Model.Categoria"%>
+<%@page import="Factory.ConexionBD"%>
+<%@page import="Factory.FactoryConexionBD"%>
+<%@page import="DAO.ProductoDAOImplementar"%>
+<jsp:useBean id="cn" class="DAO.CategoriaDAOImplementar" scope="page"></jsp:useBean>
+    <jsp:useBean id="producto" scope="session" class="Model.Producto" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+           try{
+        HttpSession var_Session = request.getSession(false);
+        String nombres = (String) var_Session.getAttribute("sessionNombres");
+        String user = (String) var_Session.getAttribute("sessionUsuario");
+        String tipo = (String) var_Session.getAttribute("sessionTipo");
+        String correo = (String) var_Session.getAttribute("sessionEmail");
+ 
+        if(user == null){
+            out.print("<center><h2><font color='blue'>Debe de haber iniciado Sesion para poder ingresar a esta pagina.</font><br><hr><font color='blue'>Intentelo de Nuevo</font><hr><h2></center><br>");
+            out.print("<center><h2><font color='blue'> Por Favor Epere...</font><hr><h2></center>");
+            //out.print("<meta http-equiv='refresh' content='4; url=http:sesion'/ >");
+            //out.print("<meta http-equiv='refresh' content='4; url=http:./'/ >");
+            response.sendRedirect("./");
+        }else if(user!=null){
+%>
 <!DOCTYPE html>
-<jsp:useBean id="producto" scope="session" class="Model.Producto" />
+
 
 <%
 
@@ -27,6 +51,7 @@
 
 
     }else{
+        
         id_pro = String.valueOf(producto.getId_producto());    
         nom_pro = producto.getNom_producto();
         estado_pro = String.valueOf(producto.getEstado());
@@ -35,7 +60,7 @@
         unidad_pro = producto.getUnidadMedida();
         estado_pro = String.valueOf(producto.getEstado());
         categoria_pro = String.valueOf(producto.getCategoria_id());
-        fecha_pro = producto.getFecha_entrada();
+        
     }
 %>
 
@@ -55,8 +80,12 @@
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
         <div class="estilo_consulta">     
-        <h3>Mantenimiento Categorias</h3>
-        <form class="form-horizontal" id="frmCategoria" name="frmProductos" action="<%= request.getContextPath() %>/productos" method="post">
+       
+        <div class="col-lg-10">
+         <div class="card shadow-lg border-0 rounded-lg  bg-info">
+          <div class="card-header"><h3 class="text-center font-weight-light my-4 "><b>Registrar Producto</b></h3></div>
+          <div class="card-body">
+        <form class="form-horizontal" name="frmProductos" action="<%= request.getContextPath() %>/productos" method="post">
             <input type="hidden" name="txtId_producto" value="<%= id_pro %>" >
             
             <div class="form-row">
@@ -92,8 +121,20 @@
             <div class="form-row">
              <div class="col-md-6">
              <div class="form-group">
+                 
             <label class="small mb-1" >CATEGORIA</label>
-            <input class="form-control py-4"  type="text" name="txtCategoriaProducto" value="<%= categoria_pro %>" required />
+        <select class="form-control" name="txtCategoriaProducto" required>
+               
+            
+            <%
+            ResultSet rs = cn.mostrarCategoria();
+                    while(rs.next()){   
+                %>
+                <option value="<%=rs.getString("id_categoria")%>"><%=rs.getString("nom_categoria")%></option>
+           <%
+                    }       
+           %>
+    </select>
            </div>
               </div>
              <div class="col-md-6">
@@ -114,7 +155,11 @@
              <div class="col-md-6">
              <div class="form-group">
            <label class="small mb-1" >FECHA</label>
-            <input class="form-control py-4" type="text" name="txtFechaProducto" value="<%= fecha_pro %>" required />
+           <%
+           Producto p = new Producto();
+           fecha_pro = p.fecha();
+           %>
+           <input class="form-control py-4" type="text" name="txtFechaProducto" value="<%= fecha_pro %>" readonly />
             </div>
             </div>
             </div>
@@ -141,8 +186,21 @@
             </div>   
         </form>
       </div>
+                           
+                            </div>
+                                    
+                                </div>
+                            </div>
+                        
     </div>
 </main>
          <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>
     </body>
 </html>
+<%
+            }
+               //Aca puede ir un mensaje para informar que no se ha iniciado sesión.
+            }catch(Exception e){
+
+            }
+   %>

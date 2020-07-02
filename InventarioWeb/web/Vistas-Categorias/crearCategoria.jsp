@@ -1,5 +1,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+           try{
+        HttpSession var_Session = request.getSession(false);
+        String nombres = (String) var_Session.getAttribute("sessionNombres");
+        String user = (String) var_Session.getAttribute("sessionUsuario");
+        String tipo = (String) var_Session.getAttribute("sessionTipo");
+        String correo = (String) var_Session.getAttribute("sessionEmail");
+ 
+        if(user == null){
+            out.print("<center><h2><font color='blue'>Debe de haber iniciado Sesion para poder ingresar a esta pagina.</font><br><hr><font color='blue'>Intentelo de Nuevo</font><hr><h2></center><br>");
+            out.print("<center><h2><font color='blue'> Por Favor Epere...</font><hr><h2></center>");
+            //out.print("<meta http-equiv='refresh' content='4; url=http:sesion'/ >");
+            //out.print("<meta http-equiv='refresh' content='4; url=http:./'/ >");
+            response.sendRedirect("./");
+        }else if(user!=null){
+%>
 <!-- Para importar los datos de la clase Categoria -->
 <jsp:useBean id="categoria" scope="session" class="Model.Categoria" />
 
@@ -37,44 +53,57 @@
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
            
-        <h3>Mantenimiento Categorias</h3>
-        <form class="form-horizontal" id="frmCategoria" name="frmCategoria" action="<%= request.getContextPath() %>/categorias" method="post">
-            <input type="hidden" name="id_categoria" value="<%= id %>" >
-            
-            <div class="form-group">
-                <label for="txtNomCategoria" class="col-sm-2 control-label">Nombre:</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" name="txtNomCategoria" value="<%= nombre_cat %>" required>
-                </div>
-            </div>
-                
-           <div class="form-group">
-                <label for="txtEstadoCategoria" class="col-sm-2 control-label">Estado:</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" name="txtEstadoCategoria" value="<%= estado_cat %>" required>
-                </div>
-            </div>
-                
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <%
+        <h3 class="text-center font-weight-bold">Mantenimiento Categorias</h3>
+        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5 bg-info">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4 "><b>Registrar Categoria</b></h3></div>
+                                    <div class="card-body">
+                                        <form class="form-horizontal" id="frmCategoria" name="frmCategoria" action="<%= request.getContextPath() %>/categorias" method="post">
+                                            <input type="hidden" name="id_categoria" value="<%= id %>" >
+                                            <div class="form-group">
+                                                <label class="display-6 mb-1 col-3" >Nombre</label>
+                                                <input class="form-control py-4"  type="text"  name="txtNomCategoria" value="<%= nombre_cat %>" required />
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label class="display-6 mb-1 col-3" >Estado</label>
+                                                <input class="form-control py-4"  type="text"  name="txtEstadoCategoria" value="<%= estado_cat %>" required/>
+                                            </div>
+                                            
+                                            <%
                         if(request.getParameter("senal")!=null){
                     %>
-                    <input type="submit" class="btn btn-default btn-sm" name="btnModificar" value="Actualizar" />
+                    <input type="submit" class="btn btn-success btn-lg" name="btnModificar" value="Actualizar" />
                     <%
                         }else{   
                     %>    
-                    <input type="submit" class="btn btn-success btn-sm" name="btnGuardar" value="Guardar" />
+                    <input type="submit" class="btn btn-success btn-lg" name="btnGuardar" value="Guardar" />
                     <%
                         }  
                     %> 
-                    <input type="button" class="btn btn-info btn-sm" onclick="regresar('<%= request.getContextPath() %>/categorias?opcion=listar')" 
+                    
+                    <input type="button" class="btn btn-warning btn-lg" onclick="regresar('<%= request.getContextPath() %>/categorias?opcion=listar')" 
                            name="btnRegresar" value="Regresar" />
-                </div>
-            </div>   
-        </form>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+        
+                           
+                           </div>
+                </main>
+                
 
          <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>
     </body>
 </html>
-<!-- Autor: Prof. Manuel de Jesús Gámez López -->
+<%
+            }
+               //Aca puede ir un mensaje para informar que no se ha iniciado sesión.
+            }catch(Exception e){
+
+            }
+   %>
