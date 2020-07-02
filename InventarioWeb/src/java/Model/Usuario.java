@@ -1,26 +1,31 @@
-
 package Model;
 
-
 public class Usuario {
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String correo;
-    private String usuario;
-    private String clave;
-    private int tipo;
-    private int estado;
-    private String pregunta;
-    private String respuesta;
-    private String fecha_registro;
+    int id;
+    String nombre;
+    String apellido;
+    String correo;
+    String usuario;
+    String clave;
+    int tipo;
+    int estado;
+    String pregunta;
+    String respuesta;
+    String fecharegistro;
 
     public Usuario() {
+        this.nombre = "";
+        this.apellido = "";
+        this.correo = "";
+        this.clave = "";
+        this.usuario = "";
+        this.pregunta = "";
+        this.respuesta = "";
+        this.estado = 1;
+        this.tipo = 1;
     }
-    
-    
 
-    public Usuario(int id, String nombre, String apellido, String correo, String usuario, String clave, int tipo, int estado, String pregunta, String respuesta, String fecha_registro) {
+    public Usuario(int id, String nombre, String apellido, String correo, String usuario, String clave, int tipo, int estado, String pregunta, String respuesta, String fecharegistro) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -31,11 +36,9 @@ public class Usuario {
         this.estado = estado;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
-        this.fecha_registro = fecha_registro;
+        this.fecharegistro = fecharegistro;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -116,13 +119,15 @@ public class Usuario {
         this.respuesta = respuesta;
     }
 
-    public String getFecha_registro() {
-        return fecha_registro;
+    public String getFecharegistro() {
+        return fecharegistro;
     }
 
-    public void setFecha_registro(String fecha_registro) {
-        this.fecha_registro = fecha_registro;
+    public void setFecharegistro(String fecharegistro) {
+        this.fecharegistro = fecharegistro;
     }
+    
+    
     
     
     
