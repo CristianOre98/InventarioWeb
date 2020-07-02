@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <meta http-equiv="refresh" content="0;url=dist/index.html">
-    <title>SB Admin</title>
+   
+    <title></title>
     <script language="javascript">
-        window.location.href = "./Home.jsp"
+        window.location.href = "./login.jsp"
     </script>
 </head>
 
 <body>
-    Go to <a href="./Home.jsp">/Home.jsp</a>
+    Go to <a href="./Login.jsp">/login.jsp</a>
 </body>
 
 </html>
