@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
 import Factory.ConexionBD;
@@ -20,9 +25,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet(urlPatterns = ("/ReporteCategoria"))
-public class ReporteCategoria extends HttpServlet {
+/**
+ *
+ * @author JCH
+ */
+@WebServlet(urlPatterns = ("/pdf"))
+public class Pdf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,10 +62,10 @@ public class ReporteCategoria extends HttpServlet {
                     PdfWriter.getInstance(Documento, salida);
                     Documento.open();// abrir documento
                     // Metadatos
-                    Documento.addAuthor("AdoBau");
-                    Documento.addCreator("Adonis Bautista");
+                    Documento.addAuthor("Jc_Aries");
+                    Documento.addCreator("Josue Chorro");
                     Documento.addSubject("Usando itext");
-                    Documento.addKeywords("Reporte Categoria");
+                    Documento.addKeywords("pdf");
 
                     Paragraph titulo = new Paragraph();
                     Paragraph parrafo = new Paragraph(); // objeto parrafo contiene el string
@@ -108,9 +116,9 @@ public class ReporteCategoria extends HttpServlet {
             }
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReporteCategoria.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pdf.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ReporteCategoria.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pdf.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
             
         }

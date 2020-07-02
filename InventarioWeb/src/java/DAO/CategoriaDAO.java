@@ -1,17 +1,18 @@
-
 package DAO;
 
 import Model.Categoria;
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface CategoriaDAO {
-    /*Definir los metodos, como la clase en inteface los metodos no se implementan
-    aqui, metodos son de tipo abstractos*/
-    
-    public List<Categoria> listar();
+    //Definir los métodos, como la clase en interface. Los métodos no se implementan 
+    //aqui, los métodos son de tipo abstractos.
+    public List<Categoria> Listar();
     public List<Categoria> Listar2();
     public Categoria editarCat(int id_cat_edit);
     public boolean guardarCat(Categoria categoria);
     public boolean borrarCat(int id_cat_borrar);
-   
+    
+    public ResultSet mostrarCategoria();
+     
 }

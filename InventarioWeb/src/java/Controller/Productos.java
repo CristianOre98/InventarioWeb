@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
+import DAO.CategoriaDAO;
+import DAO.CategoriaDAOImplementar;
 import DAO.ProductoDAO;
 import DAO.ProductoDAOImplementar;
 import Model.Categoria;
@@ -19,10 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Nolasco
- */
+
 public class Productos extends HttpServlet {
 
     /**
@@ -45,7 +40,7 @@ public class Productos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         //Instancia a categoria DAO
-        ProductoDAO producto = new ProductoDAOImplementar();
+        ProductoDAO producto = new ProductoDAOImplementar();  
         //crear instacia de session; true para iniciar session
         HttpSession sesion = request.getSession(true);
         sesion.setAttribute("lista", producto.listar());
@@ -127,7 +122,7 @@ public class Productos extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         // processRequest(request, response);
-        String parametro = request.getParameter("accion");
+        
             
                 
              Producto producto = new Producto();
@@ -141,7 +136,7 @@ public class Productos extends HttpServlet {
             float precio = Float.parseFloat(request.getParameter("txtPrecioProducto"));
             String unidad_de_medida = request.getParameter("txtUnidadProducto");
             int estado_producto = Integer.parseInt(request.getParameter("txtEstadoProducto"));
-            int catego = Integer.parseInt(request.getParameter("txtCategoriaProducto"));
+            int categoria_id = Integer.parseInt(request.getParameter("txtCategoriaProducto"));
             String fecha_entrada = request.getParameter("txtFechaProducto");
         
         producto.setId_producto(id_producto);
@@ -152,7 +147,7 @@ public class Productos extends HttpServlet {
         producto.setUnidadMedida(unidad_de_medida);
         producto.setEstado(estado_producto);
         producto.setFecha_entrada(fecha_entrada);
-        producto.setCategoria_id(catego);
+        producto.setCategoria_id(categoria_id);
         
         ProductoDAO guardarProducto = new ProductoDAOImplementar();
         guardarProducto.guardarPro(producto);

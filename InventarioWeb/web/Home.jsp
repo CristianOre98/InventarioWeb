@@ -46,8 +46,8 @@
 </html>
 <%
             }
- 
+               //Aca puede ir un mensaje para informar que no se ha iniciado sesión.
             }catch(Exception e){
-               
+
             }
    %>

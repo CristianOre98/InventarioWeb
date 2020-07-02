@@ -1,7 +1,7 @@
 package DAO;
 
-import Factory.ConexionDB;
-import Factory.FactoryConexionDB;
+import Factory.ConexionBD;
+import Factory.FactoryConexionBD;
 import Model.Categoria;
 import Model.Usuario;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class UsuarioDaoImplementar implements UsuarioDAO{
     
-    ConexionDB conn;  //Crear el objeto tipo conexión.
+    ConexionBD conn;  //Crear el objeto tipo conexión.
 
     public UsuarioDaoImplementar() {
         //Definir a la base de datos que se conectará por defecto.
@@ -22,7 +22,7 @@ public class UsuarioDaoImplementar implements UsuarioDAO{
 
     @Override
     public ArrayList<Usuario> startSesion(String user, String clave) {
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         StringBuilder miSQL = new StringBuilder();
         miSQL.append("SELECT * FROM tb_usuario WHERE BINARY correo = '").append(user);
         miSQL.append("' and clave = md5('").append(clave);
@@ -92,7 +92,7 @@ public class UsuarioDaoImplementar implements UsuarioDAO{
 
     @Override
     public List<Usuario> listar() {
-         this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+         this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
       StringBuilder miSQL = new StringBuilder();
       miSQL.append("SELECT id, nombre, apellido, correo, usuario, clave, "
               + "tipo, estado, pregunta, respuesta, fecha_registro FROM tb_usuario");
@@ -125,7 +125,7 @@ public class UsuarioDaoImplementar implements UsuarioDAO{
 
     @Override
     public Usuario editarUsu(int id_usu_edit) {
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         
         Usuario usuario = new Usuario();
         StringBuilder miSQL = new StringBuilder();
@@ -157,7 +157,7 @@ public class UsuarioDaoImplementar implements UsuarioDAO{
 
     @Override
     public boolean guardarUsu(Usuario usuario) {
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         boolean guardar = false;
         
         try{
@@ -212,7 +212,7 @@ public class UsuarioDaoImplementar implements UsuarioDAO{
 
     @Override
     public boolean borrarUsu(int id_usu_borrar) {
-         this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+         this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         boolean borrar = false;           //Bandera de resultados
         try{
             StringBuilder miSQL = new StringBuilder();

@@ -1,26 +1,35 @@
 
 package DAO;
 
-import Factory.ConexionDB;
-import Factory.FactoryConexionDB;
+
+import Factory.ConexionBD;
+import Factory.FactoryConexionBD;
+import Factory.MySQLConexionFactory;
 import Model.Producto;
 import Model.Categoria;
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.List;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ProductoDAOImplementar implements ProductoDAO{
 
-    ConexionDB conn;
+    ConexionBD conn;
+    
 
     public ProductoDAOImplementar() {
         
     }
 
     public List<Producto> listar() {
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
       StringBuilder miSQL = new StringBuilder();
       miSQL.append("SELECT p.id_producto, p.nom_producto, p.des_producto, p.stock, p.precio, p.unidad_de_medida, p.estado_producto, "
               + "p.categoria, p.fecha_entrada FROM tb_producto p INNER JOIN tb_categoria c on p.categoria = c.id_categoria");
@@ -38,9 +47,8 @@ public class ProductoDAOImplementar implements ProductoDAO{
                 producto.setPrecio(resultadoSQL.getFloat("p.precio"));
                 producto.setUnidadMedida(resultadoSQL.getString("p.unidad_de_medida"));
                 producto.setEstado(resultadoSQL.getInt("p.estado_producto"));
-
                 producto.setCategoria_id(resultadoSQL.getInt("p.categoria"));
-                producto.setFecha_entrada(resultadoSQL.getString("p.fecha_entrada"));
+              producto.setFecha_entrada(resultadoSQL.getString("p.fecha_entrada"));
                 lista.add(producto); //agregando al array cada registro encontrado
             }
         } catch (Exception ex) {
@@ -58,7 +66,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public Producto editarPro(int id_pro_edit) {
-       this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+       this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         Categoria catego = new Categoria();
         Producto producto = new Producto();
         StringBuilder miSQL = new StringBuilder();
@@ -75,7 +83,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
                 producto.setUnidadMedida(resultadoSQL.getString("unidad_de_medida"));
                 producto.setEstado(resultadoSQL.getInt("estado_producto"));
                 producto.setCategoria_id(resultadoSQL.getInt("categoria"));
-                producto.setFecha_entrada("fecha_entrada");
+               producto.setFecha_entrada("fecha_entrada");
             }
         }catch(Exception e){
         }finally{
@@ -87,33 +95,40 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public boolean guardarPro(Producto producto) {
-        this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+        this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         boolean guardar = false;
+        
         try{
+            System.out.println("Categoria "+ producto.getId_producto());
             if(producto.getId_producto() == 0){
-                StringBuilder miSQL = new StringBuilder();
+               StringBuilder miSQL = new StringBuilder();
+
                 //Agregar consulta SQL; el id_categoria es autoincrementable.
-                miSQL.append("INSERT INTO tb_producto(nom_producto, des_producto, stock, precio, unidad_de_medida, "
-                        + "categoria, fecha_entrada) VALUES ('");
-                miSQL.append(producto.getNom_producto()+ "', '").append(producto.getDes_producto()+"', '");
-                miSQL.append(producto.getStock()+"', ").append(producto.getPrecio()+"', '");
-                miSQL.append(producto.getUnidadMedida()+"', '").append(producto.getCategoria_id()+"', ");
-                miSQL.append(producto.getFecha_entrada());
-                miSQL.append("');");
+                miSQL.append("INSERT INTO tb_producto(nom_producto, des_producto, stock, precio, unidad_de_medida, estado_producto, categoria, fecha_entrada) VALUES ");
+                miSQL.append("('"+producto.getNom_producto()+ "', ");
+                miSQL.append("'"+producto.getDes_producto()+"', ");
+                miSQL.append(producto.getStock()+", ");
+                miSQL.append(producto.getPrecio()+", '");
+                miSQL.append(producto.getUnidadMedida()+"', ");
+                miSQL.append(producto.getEstado()+", ");
+                miSQL.append(producto.getCategoria_id()+", ");
+                miSQL.append("'"+producto.getFecha_entrada()+"');");
                 //Invocar método para ejecutar la consulta.
+        
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro Guardado...");
             }else if(producto.getId_producto() >0){                            //Comprobación para actualizar...
                 System.out.println("Entramos...");
                 StringBuilder miSQL = new StringBuilder();
-                miSQL.append("UPDATE tb_producto SET id_producto = ").append(producto.getId_producto());
-                miSQL.append(", nom_producto =  '").append(producto.getNom_producto());
+                miSQL.append("UPDATE tb_producto SET ");
+                miSQL.append(" nom_producto =  '").append(producto.getNom_producto());
                 miSQL.append("', des_producto =  '").append(producto.getDes_producto());
-                miSQL.append("', stock =  ").append(producto.getStock());
-                miSQL.append(", precio =  ").append(producto.getPrecio());
-                miSQL.append(", unidad_de_medida =  '").append(producto.getUnidadMedida());
-                miSQL.append("', categoria =  ").append(producto.getCategoria_id());
-                miSQL.append(", fecha_entrada = '").append(producto.getFecha_entrada()).append("');");
+                miSQL.append("', stock =  '").append(producto.getStock());
+                miSQL.append("', precio =  '").append(producto.getPrecio());
+                miSQL.append("', unidad_de_medida =  '").append(producto.getUnidadMedida());
+                miSQL.append("', categoria =  '").append(producto.getCategoria_id());
+                miSQL.append("' WHERE id_producto =  '").append(producto.getId_producto()).append("';");
+//                miSQL.append(", fecha_entrada = '").append(producto.getFecha_entrada()).append("';");
                 //Invocar método para ejecutar la consulta.
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro modificado correctamente!");
@@ -130,7 +145,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
 
     @Override
     public boolean borrarPro(int id_pro_borrar) {
-         this.conn = FactoryConexionDB.open(FactoryConexionDB.MySQL);
+         this.conn = FactoryConexionBD.open(FactoryConexionBD.MySQL);
         boolean borrar = false;           //Bandera de resultados
         try{
             StringBuilder miSQL = new StringBuilder();
@@ -146,7 +161,4 @@ public class ProductoDAOImplementar implements ProductoDAO{
     }
 
    
-    
-   
-    
 }

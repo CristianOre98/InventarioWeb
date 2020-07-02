@@ -1,16 +1,15 @@
-
 package Model;
 
 
 public class Categoria {
-     private int id_categoria;
-     private String nom_categoria;
-     private int estado_categoria;
+    private int id_categoria;
+    private String nom_categoria;
+    private int estado_categoria;
 
     public Categoria() {
-    this.id_categoria = 0;
-    this.nom_categoria = "";
-    this.estado_categoria = 1;
+        this.id_categoria = 0;
+        this.nom_categoria = "";
+        this.estado_categoria = 1; //1 será activo y 0 será inactivo
     }
 
     public Categoria(int id_categoria, String nom_categoria, int estado_categoria) {
@@ -42,7 +41,7 @@ public class Categoria {
     public void setEstado_categoria(int estado_categoria) {
         this.estado_categoria = estado_categoria;
     }
-     
     
-     
+    
+     //Autor: Prof. Manuel de Jesús Gámez López
 }

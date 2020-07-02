@@ -28,7 +28,7 @@
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
         <h1>BIENVENID@!</h1>
         
-            <a href="<%= request.getContextPath()%>/usuarios?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva Producto</a>
+            <a href="<%= request.getContextPath()%>/usuarios?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nuevo Usuario</a>
             <h3>Listado de Usuarios</h3>
             <table id="tablaUsuario" class="table-responsive text-center text-justify table-striped table-bordered" style="width:100%">
              <thead class="table-dark">
