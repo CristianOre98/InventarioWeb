@@ -12,6 +12,18 @@
         <servlet-name>Productos</servlet-name>
         <servlet-class>Controller.Productos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Usuarios</servlet-name>
+        <servlet-class>Controller.Usuarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controller.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Salir</servlet-name>
+        <servlet-class>Controller.Salir</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>Productos</servlet-name>
         <url-pattern>/productos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Usuarios</servlet-name>
+        <url-pattern>/usuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Salir</servlet-name>
+        <url-pattern>/salir</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
