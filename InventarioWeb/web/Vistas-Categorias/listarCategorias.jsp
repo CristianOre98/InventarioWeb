@@ -35,7 +35,7 @@
             <br>
             <!--<a href="#" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva categoria</a>-->
             <a href="<%= request.getContextPath() %>/categorias?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva categoria</a>
-            <h3>Listado de Categorias Registradas</h3>  <a class="btn btn-warning float-right" href="pdf">Reporte de Categoria</a>
+            <h3>Listado de Categorias Registradas</h3>  <a class="btn btn-warning float-right" href="<%= request.getContextPath()%>/ReporteCategoria">Reporte de Categoria</a>
            
          <table id="tablaClientes" class="table-responsive text-center table-striped table-bordered" style="width:100%">
              <thead class="table-dark">

@@ -26,10 +26,10 @@
     </head>
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
-        <h1>BIENVENID@!</h1>
+     <br>
         
             <a href="<%= request.getContextPath()%>/usuarios?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nuevo Usuario</a>
-            <h3>Listado de Usuarios</h3>
+            <h3>Listado de Usuarios</h3>   <a class="btn btn-warning float-right" href="<%= request.getContextPath()%>/ReporteUsuario">Reporte de Producto</a>
             <table id="tablaUsuario" class="table-responsive text-center text-justify table-striped table-bordered" style="width:100%">
              <thead class="table-dark">
                 <tr>
@@ -87,7 +87,7 @@
                         <a href="<%= request.getContextPath() %>/usuarios?opcion=editar&&id_usu=<%= usuario.getId()%>
                            &&nom_usu=<%= usuario.getNombre()%>&&apellido_usu=<%= usuario.getApellido()%>&&correo_usu=<%= usuario.getCorreo()%>&&usuario_usu=<%= usuario.getUsuario()%>
                         &&clave_usu=<%= usuario.getClave()%>&&tipo_usu=<%= usuario.getTipo()%>&&estado_usu=<%= usuario.getEstado()%>
-                    &&pregunta_usu=<%= usuario.getUsuario()%>&&respuesta_usu=<%= usuario.getRespuesta() %>" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button" name="btnmodi">Editar</a>
+                    &&pregunta_usu=<%= usuario.getPregunta()%>&&respuesta_usu=<%= usuario.getRespuesta() %>" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button" name="btnmodi">Editar</a>
                         <a href="<%= request.getContextPath() %>/usuarios?opcion=eliminar&&id=<%= usuario.getId()%>" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button">Eliminar</a>   
                     </td>
                 </tr>

@@ -154,18 +154,19 @@
                 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <%
+                       <%
                         if(request.getParameter("senal")!=null){
                     %>
-                    <input type="submit" class="btn btn-warning btn-sm" name="btnModificar" value="Actualizar" />
+                    <input type="submit" class="btn btn-success btn-lg" name="btnModificar" value="Actualizar" />
                     <%
                         }else{   
                     %>    
-                    <input type="submit" class="btn btn-success btn-sm" name="btnGuardar" value="Guardar" />
+                    <input type="submit" class="btn btn-success btn-lg" name="btnGuardar" value="Guardar" />
                     <%
                         }  
                     %> 
-                    <input type="button" class="btn btn-info btn-sm" onclick="regresar('<%= request.getContextPath() %>/usuarios?opcion=listar')" 
+                    
+                    <input type="button" class="btn btn-warning btn-lg" onclick="regresar('<%= request.getContextPath() %>/usuarios?opcion=listar')" 
                            name="btnRegresar" value="Regresar" />
                 </div>
             </div>   

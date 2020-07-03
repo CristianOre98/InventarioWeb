@@ -1,7 +1,19 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -21,11 +33,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet(urlPatterns = ("/ReporteProducto"))
-public class ReporteProducto extends HttpServlet {
-
-    /**
+/**
+ *
+ * @author Iván Pérez
+ */
+@WebServlet(urlPatterns = {"/ReporteUsuario"})
+public class ReporteUsuario extends HttpServlet {
+  /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -47,7 +61,7 @@ public class ReporteProducto extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_inventario", "root" , "");
             st = (Statement)con.createStatement();
-            rs = st.executeQuery("SELECT * FROM tb_producto");
+            rs = st.executeQuery("SELECT * FROM tb_usuario");
             
             if (con!=null) {
                 try {
@@ -81,21 +95,23 @@ public class ReporteProducto extends HttpServlet {
                     Documento.add(parrafo);// Agregar elemento al pdf
 
                     //Agregar tabla
-                    PdfPTable tabla = new PdfPTable(9);// Columnas
+                    PdfPTable tabla = new PdfPTable(11);// Columnas
                     //               texto      fuente
                     PdfPCell celda1 = new PdfPCell(new Paragraph("Codigo", FontFactory.getFont("Arial Black",12 ,BaseColor.BLUE)));
                     PdfPCell celda2 = new PdfPCell(new Paragraph("Nombre", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda3 = new PdfPCell(new Paragraph("Descripción", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda4 = new PdfPCell(new Paragraph("Stock", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda5 = new PdfPCell(new Paragraph("Precio", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda6 = new PdfPCell(new Paragraph("Unidad de medida", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda7 = new PdfPCell(new Paragraph("Estado", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda8 = new PdfPCell(new Paragraph("categoria", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
-                    PdfPCell celda9 = new PdfPCell(new Paragraph("fecha entrada", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda3 = new PdfPCell(new Paragraph("Apellido", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda4 = new PdfPCell(new Paragraph("Correo", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda5 = new PdfPCell(new Paragraph("Usuario", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda6 = new PdfPCell(new Paragraph("Clave", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda7 = new PdfPCell(new Paragraph("Tipo", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda8 = new PdfPCell(new Paragraph("Estado", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda9 = new PdfPCell(new Paragraph("Pregunta", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda10 = new PdfPCell(new Paragraph("Pregunta", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda11 = new PdfPCell(new Paragraph("Pregunta", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
 
                     celda1.setPaddingBottom(5);// padding
                     celda9.setPaddingBottom(5);// padding
-                    tabla.setWidthPercentage(90F);
+                    tabla.setWidthPercentage(95F);
                    
                     //Agregar celdas a la tabla aconsejo usar un bucle para esto
                     tabla.addCell(celda1);
@@ -107,6 +123,8 @@ public class ReporteProducto extends HttpServlet {
                     tabla.addCell(celda7);
                     tabla.addCell(celda8);
                     tabla.addCell(celda9);
+                    tabla.addCell(celda10);
+                    tabla.addCell(celda11);
                     
                    
 
@@ -120,8 +138,8 @@ public class ReporteProducto extends HttpServlet {
                         tabla.addCell(rs.getString(7));
                         tabla.addCell(rs.getString(8));
                         tabla.addCell(rs.getString(9));
-                        
-                        
+                        tabla.addCell(rs.getString(10));
+                        tabla.addCell(rs.getString(11));
                     }
 
 

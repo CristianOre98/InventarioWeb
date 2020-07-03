@@ -26,10 +26,10 @@
     </head>
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
-        <h1>BIENVENID@!</h1>
+        <br>
         
             <a href="<%= request.getContextPath()%>/productos?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva Producto</a>
-            <h3>Listado de Productos</h3>
+            <h3>Listado de Productos</h3> <a class="btn btn-warning float-right" href="<%= request.getContextPath()%>/ReporteProducto">Reporte de Producto</a>
             <table id="tablaProducto" class="table-responsive text-center table-striped table-bordered" style="width:100%">
              <thead class="table-dark">
                 <tr>

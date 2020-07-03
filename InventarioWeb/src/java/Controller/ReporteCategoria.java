@@ -54,8 +54,8 @@ public class ReporteCategoria extends HttpServlet {
                     PdfWriter.getInstance(Documento, salida);
                     Documento.open();// abrir documento
                     // Metadatos
-                    Documento.addAuthor("AdoBau");
-                    Documento.addCreator("Adonis Bautista");
+                    Documento.addAuthor("Anonimo");
+                    Documento.addCreator("Anonimo");
                     Documento.addSubject("Usando itext");
                     Documento.addKeywords("Reporte Categoria");
 
@@ -63,7 +63,7 @@ public class ReporteCategoria extends HttpServlet {
                     Paragraph parrafo = new Paragraph(); // objeto parrafo contiene el string
                     // Propiedades de la fuente
                     Font font_titulo = new Font(Font.FontFamily.TIMES_ROMAN,16,Font.BOLD, BaseColor.BLACK);
-                    Font font_parrafos = new Font(Font.FontFamily.TIMES_ROMAN, 12,Font.NORMAL, BaseColor.DARK_GRAY);
+                    Font font_parrafos = new Font(Font.FontFamily.TIMES_ROMAN, 14,Font.NORMAL, BaseColor.DARK_GRAY);
                     // Agregar texto
                     titulo.add(new Phrase("Reporte de Categorias",font_titulo));
                     titulo.setAlignment(Element.ALIGN_CENTER);
@@ -82,9 +82,9 @@ public class ReporteCategoria extends HttpServlet {
                     //Agregar tabla
                     PdfPTable tabla = new PdfPTable(3);// Columnas
                     //                                           texto      fuente
-                    PdfPCell celda1 = new PdfPCell(new Paragraph("Codigo", FontFactory.getFont("Arial Black",12,BaseColor.RED)));
-                    PdfPCell celda2 = new PdfPCell(new Paragraph("Nombre", FontFactory.getFont("Arial Black",12,BaseColor.RED)));
-                    PdfPCell celda3 = new PdfPCell(new Paragraph("Estado", FontFactory.getFont("Arial Black",12,BaseColor.RED)));
+                    PdfPCell celda1 = new PdfPCell(new Paragraph("Codigo", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda2 = new PdfPCell(new Paragraph("Nombre", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
+                    PdfPCell celda3 = new PdfPCell(new Paragraph("Estado", FontFactory.getFont("Arial Black",12,BaseColor.BLUE)));
 
                     celda1.setPaddingBottom(5);// padding
                     celda3.setPaddingBottom(5);// padding

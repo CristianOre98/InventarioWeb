@@ -53,14 +53,17 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="categorias?opcion=listar">
+                            <a class="nav-link" href="<%= request.getContextPath()%>/categorias?opcion=listar">
                                 Categoria
                             </a>
-                            <a class="nav-link" href="productos?opcion=listar">
+                            <a class="nav-link" href="<%= request.getContextPath()%>/productos?opcion=listar">
                                 Producto
                             </a>
-                             <a class="nav-link" href="usuarios?opcion=listar">
+                             <a class="nav-link" href="<%= request.getContextPath()%>/usuarios?opcion=listar">
                                 Usuario
+                            </a>
+                                <a class="nav-link" href="">
+                                Creadores
                             </a>
                             
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">

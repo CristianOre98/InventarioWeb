@@ -53,7 +53,6 @@
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
            
-        <h3 class="text-center font-weight-bold">Mantenimiento Categorias</h3>
         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5 bg-info">
