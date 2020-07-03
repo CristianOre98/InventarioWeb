@@ -55,7 +55,7 @@
               <div class="card" style="width: 20rem; ">
                   <img class="card-img-top img-fluid" src="./img/AdonisHD.jpg" alt="Card image cap" style="max-height: 18rem" >
               <div class="card-body">
-              <h5 class="card-title">Adonis Alejandro Marin Bautista</h5>
+              <h5 class="card-title">Adonis Alejandro Marin Bautista 184419</h5>
               <p class="card-text">Back end <br>
                       <b>Grupo: </b>Sistemas 21. <br>
                   <b>Escuela de estudio: </b>Computación <br>
