@@ -99,7 +99,7 @@ public class ProductoDAOImplementar implements ProductoDAO{
         boolean guardar = false;
         
         try{
-            System.out.println("Categoria "+ producto.getId_producto());
+            System.out.println("Producto "+ producto.getId_producto());
             if(producto.getId_producto() == 0){
                StringBuilder miSQL = new StringBuilder();
 
