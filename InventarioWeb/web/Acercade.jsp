@@ -37,7 +37,7 @@
              <h1 class="text-center tex-primary">Informacion de los Creadores.</h1>
              <div class="row">
             <div class="col-sm-6">
-              <div class="card" style="width: 20rem; ">
+              <div class="card bg-warning" style="width: 20rem; ">
                    <img class="card-img-top img-fluid" src="./img/Cristian.jpg" alt="Card image cap" style="max-height: 18rem">
               <div class="card-body">
               <h5 class="card-title">Cristian Vladimir Orellana Orellana 186319</h5>
@@ -52,7 +52,7 @@
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="card" style="width: 20rem; ">
+              <div class="card bg-warning" style="width: 20rem; ">
                   <img class="card-img-top img-fluid" src="./img/AdonisHD.jpg" alt="Card image cap" style="max-height: 18rem" >
               <div class="card-body">
               <h5 class="card-title">Adonis Alejandro Marin Bautista 184419</h5>
@@ -69,7 +69,7 @@
              <br>
               <div class="row">
             <div class="col-sm-6">
-              <div class="card" style="width: 20rem; ">
+              <div class="card bg-warning" style="width: 20rem; ">
                   <img class="card-img-top img-fluid" src="./img/Douglas.jpg" alt="Card image cap" style="max-height: 18rem">
               <div class="card-body">
               <h5 class="card-title">Douglas Josue Ayala Cordoba 184119</h5>
@@ -83,10 +83,10 @@
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="card" style="width: 20rem; ">
+              <div class="card bg-warning" style="width: 20rem; ">
                   <img class="card-img-top img-fluid" src="./img/Chino.jpeg" alt="Card image cap" style="max-height: 18rem">
               <div class="card-body">
-              <h5 class="card-title">Brayan Isaac Nalasco Ramirez </h5>
+              <h5 class="card-title">Brayan Isaac Nalasco Ramirez 260919</h5>
               <p class="card-text">Front end<br>
                       <b>Grupo: </b>Sistemas 21. <br>
                   <b>Escuela de estudio: </b>Computación <br>
