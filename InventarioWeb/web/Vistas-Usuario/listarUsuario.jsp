@@ -29,7 +29,7 @@
      <br>
         
             <a href="<%= request.getContextPath()%>/usuarios?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nuevo Usuario</a>
-            <h3>Listado de Usuarios</h3>   <a class="btn btn-warning float-right" href="<%= request.getContextPath()%>/ReporteUsuario">Reporte de Producto</a>
+            <h3>Listado de Usuarios</h3>   <a class="btn btn-warning float-right" href="<%= request.getContextPath()%>/ReporteUsuario">Reporte de Usuario</a>
             <table id="tablaUsuario" class="table-responsive text-center text-justify table-striped table-bordered" style="width:100%">
              <thead class="table-dark">
                 <tr>
